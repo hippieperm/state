@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
 
 // 메인 화면 (탭 네비게이션)
 class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  const MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -84,17 +84,16 @@ class ItemsNotifier extends StateNotifier<List<Item>> {
 
   // 아이템 좋아요 상태 토글
   void toggleFavorite(int id) {
-    state =
-        state.map((item) {
-          if (item.id == id) {
-            return Item(
-              id: item.id,
-              name: item.name,
-              isFavorite: !item.isFavorite,
-            );
-          }
-          return item;
-        }).toList();
+    state = state.map((item) {
+      if (item.id == id) {
+        return Item(
+          id: item.id,
+          name: item.name,
+          isFavorite: !item.isFavorite,
+        );
+      }
+      return item;
+    }).toList();
   }
 }
 
