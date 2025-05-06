@@ -8,11 +8,11 @@ class ItemTile extends StatelessWidget {
   final VoidCallback onLike;
 
   const ItemTile({
-    Key? key,
+    super.key,
     required this.item,
     required this.viewModel,
     required this.onLike,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
