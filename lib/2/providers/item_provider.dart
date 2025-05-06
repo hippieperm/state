@@ -14,4 +14,13 @@ class ItemNotifier extends StateNotifier<List<Item>> {
   void removeItem(String id) {
     state = state.where((item) => item.id != id).toList();
   }
+
+  void toggleLike(String id) {
+    state = state.map((item) {
+      if (item.id == id) {
+        return item.copyWith(isLiked: !item.isLiked);
+      }
+      return item;
+    }).toList();
+  }
 }
