@@ -6,8 +6,11 @@ class ItemTile extends StatelessWidget {
   final Item item;
   final ItemViewModel viewModel;
 
-  const ItemTile({Key? key, required this.item, required this.viewModel})
-      : super(key: key);
+  const ItemTile({
+    super.key,
+    required this.item,
+    required this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
