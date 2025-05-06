@@ -35,7 +35,13 @@ class ItemListScreen extends ConsumerWidget {
         itemCount: items.length,
         itemBuilder: (context, index) {
           final viewModel = ItemViewModel(items[index]);
-          return ItemTile(item: items[index], viewModel: viewModel);
+          return ItemTile(
+            item: items[index],
+            viewModel: viewModel,
+            onLike: () {
+              ref.read(itemProvider.notifier).toggleLike(items[index].id);
+            },
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(
