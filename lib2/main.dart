@@ -11,26 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Consumer(
-        builder: (context, ref, child) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(
-                'ITEM LIST',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            body: ListView.builder(
-              itemCount: 1,
-              itemBuilder: (BuildContext context, int index) {
-                return ;
-              },
-            ),,
-          );
-        },
-      ),
+      home: ItemListScreen(),
     );
+  }
+}
+
+class ItemListScreen extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(provider)
+    return Scaffold();
   }
 }
