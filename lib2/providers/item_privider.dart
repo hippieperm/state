@@ -9,10 +9,6 @@ class ItemNotifier extends StateNotifier<List<Item>> {
   }
 
   void removeItem(String id) {
-    state = state
-        .where(
-          (item) => item.id != id,
-        )
-        .toList();
+    state = state.where((item) => item.id != id).toList();
   }
 }
