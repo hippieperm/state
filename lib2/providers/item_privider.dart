@@ -1,6 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state/models/item.dart';
 
+final itemProvider = StateNotifierProvider<ItemNotifier, List<Item>>((ref) {
+  return ItemNotifier();
+});
+
 class ItemNotifier extends StateNotifier<List<Item>> {
   ItemNotifier() : super([]);
 
