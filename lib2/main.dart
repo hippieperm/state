@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'pages/item_list_screen.dart';
+
 void main() {
   runApp(ProviderScope(child: MyApp()));
 }
@@ -13,13 +15,5 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: ItemListScreen(),
     );
-  }
-}
-
-class ItemListScreen extends ConsumerWidget {
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(provider)
-    return Scaffold();
   }
 }
