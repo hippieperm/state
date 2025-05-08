@@ -5,6 +5,8 @@ final itemProvider = StateNotifierProvider<ItemProvider, List<Item>>((ref) {
   return ItemProvider();
 });
 
+final counterProvider = StateProvider<int>((ref) => 1);
+
 class ItemProvider extends StateNotifier<List<Item>> {
   ItemProvider() : super([]);
 
