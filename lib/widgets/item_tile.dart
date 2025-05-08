@@ -18,6 +18,7 @@ class ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(item.name),
+      leading: Text(item.id),
       trailing: IconButton(
         icon: Icon(
           item.isLiked ? Icons.favorite : Icons.favorite_border,
