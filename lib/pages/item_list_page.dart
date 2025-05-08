@@ -9,6 +9,7 @@ class ItemListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final items = ref.watch(itemProvider);
+    final cnt = ref.watch(counterProvider);
 
     return Scaffold(
       appBar: AppBar(title: Text('Item List')),
@@ -33,8 +34,8 @@ class ItemListPage extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           ref.read(itemProvider.notifier).addItem(
-                Item(id: DateTime.now().toString(), name: 'New Item'),
-              );
+              Item(id: DateTime.now().toString(), name: 'New Item $cnt'));
+          ref.read(counterProvider.notifier).state++;
         },
         child: Icon(Icons.add),
       ),
