@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state/data/item.dart';
-import 'package:state/providers/item_provider.dart';
+import '../data/item.dart';
+import '../providers/item_provider.dart';
 
 class ItemListPage extends ConsumerWidget {
   const ItemListPage({super.key});
