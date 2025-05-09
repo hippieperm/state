@@ -22,6 +22,13 @@ class ItemList extends ConsumerWidget {
 
           return ListTile(
             title: Text(items.name),
+            trailing: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.favorite,
+                color: items.isLiked ? Colors.red : Colors.grey,
+              ),
+            ),
           );
         },
       ),
