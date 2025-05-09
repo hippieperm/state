@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../data/item.dart';
+import '../models/item.dart';
 
 final itemProvider = StateNotifierProvider<ItemProvider, List<Item>>((ref) {
   return ItemProvider();

@@ -1,4 +1,4 @@
-import '../data/item.dart';
+import '../models/item.dart';
 
 class ItemViewModel {
   final Item item;
