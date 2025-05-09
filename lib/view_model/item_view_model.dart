@@ -5,6 +5,10 @@ final itemProvider = StateNotifierProvider<ItemViewModel, List<Item>>((ref) {
   return ItemViewModel();
 });
 
+final cntProvider = StateProvider<int>((ref) {
+  return 1;
+});
+
 class ItemViewModel extends StateNotifier<List<Item>> {
   ItemViewModel() : super([]);
 
