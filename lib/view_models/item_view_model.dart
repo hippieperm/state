@@ -8,7 +8,16 @@ class ItemViewModel extends StateNotifier<List<Item>> {
     state = [...state, item];
   }
 
-  void toggleLike() {}
+  void toggleLike(String id) {
+    state = state.map(
+      (e) {
+        if (e.id == id) {
+          return Item(id: e.id, name: e.name, isLiked: !e.isLiked);
+        }
+        return e;
+      },
+    ).toList();
+  }
 }
 
 final itemProvider = StateNotifierProvider<ItemViewModel, List<Item>>((ref) {
