@@ -6,6 +6,14 @@ class ItemList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('item'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
