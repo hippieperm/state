@@ -17,7 +17,7 @@ class ItemViewModel extends StateNotifier<List<Item>> {
   }
 
   void toggleLiked(String name) {
-    state.map(
+    state = state.map(
       (e) {
         if (e.name == name) {
           return Item(name: e.name, isLiked: !e.isLiked);
