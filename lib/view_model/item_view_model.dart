@@ -4,6 +4,9 @@ import 'package:state/models/item.dart';
 class ItemViewModel extends StateNotifier<List<Item>> {
   ItemViewModel() : super([]);
 
-  void addItem() {}
+  void addItem(Item item) {
+    state = [...state, item];
+  }
+
   void toggleLiked() {}
 }
