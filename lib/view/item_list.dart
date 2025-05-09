@@ -26,7 +26,7 @@ class ItemList extends ConsumerWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DetailPage(),
+                    builder: (context) => DetailPage(items: items.name),
                   ));
             },
             child: ListTile(
