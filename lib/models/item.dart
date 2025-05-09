@@ -1,8 +1,8 @@
-class ClassName {
+class Item {
   final String name;
   bool isLiked;
 
-  ClassName({
+  Item({
     required this.name,
     this.isLiked = false,
   });
