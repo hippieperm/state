@@ -15,9 +15,19 @@ class ItemList extends ConsumerWidget {
       appBar: AppBar(
         title: Text('item'),
       ),
+      body: ListView.builder(
+        itemCount: item.length,
+        itemBuilder: (BuildContext context, int index) {
+          final items = item[index];
+
+          return ListTile(
+            title: Text(items.name),
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(itemProvider.notifier).addItem(Item(name: 'item'));
+          ref.read(itemProvider.notifier).addItem(Item(name: 'item $cnt'));
           ref.read(cntProvider.notifier).state++;
         },
         child: Icon(Icons.add),
