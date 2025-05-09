@@ -1,7 +1,7 @@
 class Item {
   final String id;
   final String name;
-  bool isLiked;
+  final bool isLiked;
 
   Item({
     required this.id,
