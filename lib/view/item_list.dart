@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:state/view/detail_page.dart';
 import '../models/item.dart';
 import '../view_model/item_view_model.dart';
 
@@ -20,15 +21,24 @@ class ItemList extends ConsumerWidget {
         itemBuilder: (BuildContext context, int index) {
           final items = item[index];
 
-          return ListTile(
-            title: Text(items.name),
-            trailing: IconButton(
-              onPressed: () {
-                ref.read(itemProvider.notifier).toggleLiked(items.name);
-              },
-              icon: Icon(
-                Icons.favorite,
-                color: items.isLiked ? Colors.red : Colors.grey,
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetailPage(),
+                  ));
+            },
+            child: ListTile(
+              title: Text(items.name),
+              trailing: IconButton(
+                onPressed: () {
+                  ref.read(itemProvider.notifier).toggleLiked(items.name);
+                },
+                icon: Icon(
+                  Icons.favorite,
+                  color: items.isLiked ? Colors.red : Colors.grey,
+                ),
               ),
             ),
           );
