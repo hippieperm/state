@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state/view/item_list.dart';
+import 'view/item_list.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
