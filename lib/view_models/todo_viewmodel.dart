@@ -2,10 +2,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state/models/todo_item.dart';
 
 class TodoViewmodel extends StateNotifier<List<TodoItem>> {
-    // 로직들을 구성
-    void addTodo() {}
-    void removeTodo() {}
-    void completeTodo() {}
+  TodoViewmodel(super.state);
+
+  // 로직들을 구성
+  void addTodo() {}
+  void removeTodo() {}
+  void completeTodo() {}
 }
 
 // 물론 여기에 Riverpod의 문법이 들어가야겠지만 

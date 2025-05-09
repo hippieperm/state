@@ -7,10 +7,6 @@ import '../models/item.dart';
 class ItemListPage extends ConsumerWidget {
   const ItemListPage({super.key});
 
-  void toggleLike() {
-    // asdasd
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ref : reference의 약자 -> 전역 상태 관련 데이터가 들어있는 변수
