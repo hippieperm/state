@@ -4,8 +4,20 @@ import 'package:state/models/item.dart';
 class ItemViewModel extends StateNotifier<List<Item>> {
   ItemViewModel() : super([]);
 
-  void addItem() {}
-  void isLiked() {}
+  void addItem(Item item) {
+    state = [...state, item];
+  }
+
+  void isLiked(String name) {
+    state = state.map(
+      (item) {
+        if (item.name == name) {
+          return Item(name: item.name, isLiked: !item.isLiked);
+        }
+        return item;
+      },
+    ).toList();
+  }
 }
 
 final itemProvider = StateNotifierProvider<ItemViewModel, List<Item>>((ref) {
