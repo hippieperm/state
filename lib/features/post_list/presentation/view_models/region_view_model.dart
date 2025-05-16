@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state/models/region.dart';
+import 'package:state/features/post_list/domain/models/region.dart';
 
 // 선택된 지역 프로바이더
 final selectedRegionProvider = StateProvider<Region>((ref) => regionList.first);

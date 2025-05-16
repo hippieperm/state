@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state/models/region.dart';
-import 'package:state/view_models/region_view_model.dart';
+import 'package:state/features/post_list/domain/models/region.dart';
+import 'package:state/features/post_list/presentation/view_models/region_view_model.dart';
 
 class RegionSelector extends ConsumerWidget {
   const RegionSelector({super.key});
@@ -12,63 +12,52 @@ class RegionSelector extends ConsumerWidget {
     final selectedRegion = ref.watch(selectedRegionProvider);
     final selectedSubRegion = ref.watch(selectedSubRegionProvider);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding:
-              const EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 4),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () => _showRegionSelectionDialog(context, ref),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.location_on,
-                            size: 16, color: Color(0xFFFF7B8E)),
-                        const SizedBox(width: 4),
-                        Text(
-                          '${selectedRegion.name} ${selectedSubRegion}',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        const Icon(Icons.arrow_drop_down, color: Colors.grey),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              InkWell(
-                onTap: () {
-                  _showRegionSelectionDialog(context, ref);
-                },
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey.shade300),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Row(
-                    children: [
-                      Icon(Icons.tune, size: 14, color: Colors.grey),
-                      SizedBox(width: 2),
-                      Text('지역 설정', style: TextStyle(fontSize: 12)),
-                    ],
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          InkWell(
+            onTap: () => _showRegionSelectionDialog(context, ref),
+            child: Row(
+              children: [
+                const Icon(Icons.location_on,
+                    size: 16, color: Color(0xFFFF7B8E)),
+                const SizedBox(width: 4),
+                Text(
+                  '${selectedRegion.name} ${selectedSubRegion}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(width: 4),
+                const Icon(Icons.arrow_drop_down, color: Colors.grey),
+              ],
+            ),
           ),
-        ),
-        const Divider(),
-      ],
+          InkWell(
+            onTap: () {
+              _showRegionSelectionDialog(context, ref);
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade300),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Row(
+                children: [
+                  Icon(Icons.tune, size: 14, color: Colors.grey),
+                  SizedBox(width: 2),
+                  Text('지역 설정', style: TextStyle(fontSize: 12)),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

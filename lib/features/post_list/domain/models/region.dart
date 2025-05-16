@@ -1,7 +1,7 @@
 class Region {
-  final String id;
-  final String name;
-  final List<String> subRegions;
+  final String id; // 지역 식별자 (예: seoul, gyeonggi 등)
+  final String name; // 지역 이름 (예: 서울특별시, 경기도 등)
+  final List<String> subRegions; // 하위 지역 목록 (예: 강남구, 마포구 등)
 
   const Region({
     required this.id,

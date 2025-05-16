@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state/views/town_life_page.dart';
+// import 'package:firebase_core/firebase_core.dart';
+import 'package:state/features/post_list/presentation/pages/town_life_page.dart';
 
-void main() {
-  runApp(ProviderScope(child: MyApp()));
+// Firebase 사용 여부를 결정하는 플래그
+const bool useFirebase = false;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Firebase 초기화 (useFirebase가 true인 경우에만 시도)
+  /*
+  if (useFirebase) {
+    try {
+      await Firebase.initializeApp();
+      print('Firebase 초기화 성공');
+    } catch (e) {
+      print('Firebase 초기화 실패: $e');
+    }
+  } else {
+    print('Firebase를 사용하지 않는 모드로 실행합니다.');
+  }
+  */
+
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {

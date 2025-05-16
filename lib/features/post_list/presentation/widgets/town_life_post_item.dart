@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state/models/town_life_post.dart';
-import 'package:state/view_models/town_life_view_model.dart';
+import 'package:state/features/post_list/domain/models/town_life_post.dart';
+import 'package:state/features/post_list/presentation/view_models/town_life_view_model.dart';
 
 class TownLifePostItem extends ConsumerWidget {
   final TownLifePost post;

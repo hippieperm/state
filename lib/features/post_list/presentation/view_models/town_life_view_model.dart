@@ -1,23 +1,16 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state/models/region.dart';
-import 'package:state/models/town_life_post.dart';
-import 'package:state/services/post_service.dart';
+import 'package:state/features/post_list/domain/models/region.dart';
+import 'package:state/features/post_list/domain/models/town_life_post.dart';
+import 'package:state/features/post_list/data/repositories/post_service.dart';
+import 'package:state/features/post_list/domain/models/category.dart';
 
 // 현재 선택된 카테고리를 관리하는 프로바이더
-final selectedCategoryProvider = StateProvider<String?>((ref) => null);
+final selectedCategoryProvider =
+    StateProvider<TownLifeCategory>((ref) => TownLifeCategory.all);
 
 // 카테고리 목록 프로바이더
-final categoriesProvider = Provider<List<String>>((ref) => [
-      '전체',
-      '우리동네질문',
-      '동네소식',
-      '해주세요',
-      '일상',
-      '동네맛집',
-      '분실/실종',
-      '동네모임',
-      '같이해요',
-    ]);
+final categoriesProvider =
+    Provider<List<TownLifeCategory>>((ref) => allCategories);
 
 // 좋아요 상태를 관리하는 프로바이더
 final likedPostsProvider =
@@ -45,12 +38,12 @@ final filteredPostsProvider = Provider<List<TownLifePost>>((ref) {
   final selectedCategory = ref.watch(selectedCategoryProvider);
   final townLifeState = ref.watch(townLifeStateProvider);
 
-  if (selectedCategory == null || selectedCategory == '전체') {
+  if (selectedCategory == TownLifeCategory.all) {
     return townLifeState.posts;
   }
 
   return townLifeState.posts
-      .where((post) => post.category == selectedCategory)
+      .where((post) => post.categoryEnum == selectedCategory)
       .toList();
 });
 

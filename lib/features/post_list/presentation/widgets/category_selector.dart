@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:state/view_models/town_life_view_model.dart';
+import 'package:state/features/post_list/presentation/view_models/town_life_view_model.dart';
+import 'package:state/features/post_list/domain/models/category.dart';
 
 class CategorySelector extends ConsumerWidget {
   const CategorySelector({super.key});
@@ -18,27 +19,26 @@ class CategorySelector extends ConsumerWidget {
         itemCount: categories.length,
         itemBuilder: (context, index) {
           final category = categories[index];
-          final isSelected = selectedCategory == category ||
-              (selectedCategory == null && category == '전체');
+          final isSelected = selectedCategory == category;
 
           return GestureDetector(
             onTap: () {
-              ref.read(selectedCategoryProvider.notifier).state =
-                  category == '전체' ? null : category;
+              ref.read(selectedCategoryProvider.notifier).state = category;
             },
             child: Container(
               margin: const EdgeInsets.only(left: 12, right: 4),
               padding: const EdgeInsets.symmetric(horizontal: 16),
               decoration: BoxDecoration(
-                color: isSelected ? Color(0xffFF7B8E) : Colors.white,
+                color: isSelected ? const Color(0xffFF7B8E) : Colors.white,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
-                  color: isSelected ? Color(0xffFF7B8E) : Colors.grey[300]!,
+                  color:
+                      isSelected ? const Color(0xffFF7B8E) : Colors.grey[300]!,
                 ),
               ),
               alignment: Alignment.center,
               child: Text(
-                category,
+                category.text,
                 style: TextStyle(
                   color: isSelected ? Colors.white : Colors.black87,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
