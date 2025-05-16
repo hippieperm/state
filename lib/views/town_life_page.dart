@@ -16,7 +16,7 @@ class TownLifePage extends ConsumerWidget {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title:
-            const Text('동네생활', style: TextStyle(fontWeight: FontWeight.bold)),
+            const Text('소소한동네', style: TextStyle(fontWeight: FontWeight.bold)),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
