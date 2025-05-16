@@ -23,18 +23,25 @@ class RegionSelector extends ConsumerWidget {
             children: [
               Row(
                 children: [
-                  const Icon(Icons.location_on,
-                      size: 16, color: Color(0xFFFF7B8E)),
-                  const SizedBox(width: 4),
-                  Text(
-                    '${selectedRegion.name} ${selectedSubRegion}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+                  InkWell(
+                    onTap: () => _showRegionSelectionDialog(context, ref),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.location_on,
+                            size: 16, color: Color(0xFFFF7B8E)),
+                        const SizedBox(width: 4),
+                        Text(
+                          '${selectedRegion.name} ${selectedSubRegion}',
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        const Icon(Icons.arrow_drop_down, color: Colors.grey),
+                      ],
                     ),
                   ),
-                  const SizedBox(width: 4),
-                  const Icon(Icons.arrow_drop_down, color: Colors.grey),
                 ],
               ),
               InkWell(
@@ -113,6 +120,7 @@ class _RegionSelectionDialogState extends ConsumerState<RegionSelectionDialog> {
       title: const Text('지역 선택'),
       content: SizedBox(
         width: double.maxFinite,
+        height: 500,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -126,7 +134,12 @@ class _RegionSelectionDialogState extends ConsumerState<RegionSelectionDialog> {
                   final region = widget.regions[index];
                   return ListTile(
                     dense: true,
-                    title: Text(region.name),
+                    title: Text(
+                      region.name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     selected: _selectedRegion.id == region.id,
                     selectedColor: const Color(0xFFFF7B8E),
                     onTap: () {
@@ -151,7 +164,12 @@ class _RegionSelectionDialogState extends ConsumerState<RegionSelectionDialog> {
                   final subRegion = _selectedRegion.subRegions[index];
                   return ListTile(
                     dense: true,
-                    title: Text(subRegion),
+                    title: Text(
+                      subRegion,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     selected: _selectedSubRegion == subRegion,
                     selectedColor: const Color(0xFFFF7B8E),
                     onTap: () {
@@ -167,18 +185,31 @@ class _RegionSelectionDialogState extends ConsumerState<RegionSelectionDialog> {
         ),
       ),
       actions: [
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text('취소'),
-        ),
-        TextButton(
-          onPressed: () {
-            ref.read(selectedRegionProvider.notifier).state = _selectedRegion;
-            ref.read(selectedSubRegionProvider.notifier).state =
-                _selectedSubRegion;
-            Navigator.pop(context);
-          },
-          child: const Text('확인'),
+        // TextButton(
+        //   onPressed: () => Navigator.pop(context),
+        //   child: const Text('취소'),
+        // ),
+        SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFFF7B8E),
+            ),
+            onPressed: () {
+              ref.read(selectedRegionProvider.notifier).state = _selectedRegion;
+              ref.read(selectedSubRegionProvider.notifier).state =
+                  _selectedSubRegion;
+              Navigator.pop(context);
+            },
+            child: const Text(
+              '확인',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ),
       ],
     );
